@@ -1,6 +1,6 @@
 AUTHOR = 'Nirav'
 SITENAME = 'SRKDS'
-SITEURL = ''
+SITEURL = 'https://srkds.github.io/personal-blog/'
 
 PATH = 'content'
 
