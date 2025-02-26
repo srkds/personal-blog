@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>How I Read the Paper and Implemented It!</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+<link href="https://srkds.github.io/personal-blog/implementing-a-research-paper.html" rel="canonical" />
+  <!-- Feed -->
+
+  <link href="https://srkds.github.io/personal-blog/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+
+    <!-- Custom fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+
+    <meta name="description" content="General guideline or my experience implementing a research paper.">
+
+    <meta name="author" content="Nirav">
+
+    <meta name="tags" content="Research">
+    <meta name="tags" content="Deep Learning">
+    <meta name="tags" content="PyTorch">
+
+
+
+
+<!-- Open Graph -->
+<meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="SRKDS"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:title" content="How I Read the Paper and Implemented It!"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="General guideline or my experience implementing a research paper."/>
+<meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://srkds.github.io/personal-blog/implementing-a-research-paper.html"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:type" content="article"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:published_time" content="2025-02-25 12:05:00+05:30"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:modified_time" content=""/>
+<meta prefix="og: http://ogp.me/ns#" property="article:author" content="https://srkds.github.io/personal-blog/author/nirav.html">
+<meta prefix="og: http://ogp.me/ns#" property="article:section" content="Research"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Research"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Deep Learning"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="PyTorch"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://srkds.github.io/personal-blog/theme/images/home-bg.jpg">
+
+<!-- Twitter Card -->
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "How I Read the Paper and Implemented It!",
+  "headline": "How I Read the Paper and Implemented It!",
+  "datePublished": "2025-02-25 12:05:00+05:30",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "Nirav",
+    "url": "https://srkds.github.io/personal-blog/author/nirav.html"
+  },
+  "image": "https://srkds.github.io/personal-blog/theme/images/post-bg.jpg",
+  "url": "https://srkds.github.io/personal-blog/implementing-a-research-paper.html",
+  "description": "General guideline or my experience implementing a research paper."
+}
+</script>
+</head>
+<!-- TODO : Body class -->
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+
+
+    </ul>
+  </div>
+</nav>
+    <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" >
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="https://srkds.github.io/personal-blog/" aria-label="Home" title="Home">
+                  <i class="ic ic-arrow-left" aria-hidden="true"></i>
+                  <span>Home</span>
+                </a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button" aria-label="Menu">
+              <i class="ic ic-menu" aria-hidden="true"></i>
+              <span>Menu</span>
+            </a>
+          </span>
+        </nav>
+        <h1 class="post-title">How I Read the Paper and Implemented It!</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="https://srkds.github.io/personal-blog/author/nirav.html">Nirav</a>
+            | <time datetime="Tue 25 February 2025">Tue 25 February 2025</time>
+        </span>
+      </div>
+    </header>
+
+  <section id="wrapper">
+    <a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <blockquote>
+<p>NOTE: This is the draft version</p>
+</blockquote>
+<p><img alt="Alt Text" src="images/video.gif"></p>
+<p>At the start of my master's, I had no understanding of research or the field of deep learning. However, by the end of my program, I published a paper at the ICARCV 2024 conference and shared the code. It's important to note that my environment wasn't ideal for research, lacking both resources and a supportive community. Despite these challenges, I managed to complete my research. The key was finding one or two people I genuinely enjoyed working with—whether that was my guide or a friend. With the right collaborators, you can produce great work, even in less-than-ideal environments.</p>
+<h3>Have a Guide or Advisor:</h3>
+<p>If you’re doing research for the first time, it’s helpful to work with someone who has experience. I noticed that without guidance, I was lost and uncertain about which direction to take, as I had no prior experience in research.</p>
+<p><strong>Advice:</strong> Choose a guide who is relatively young, someone you’ve had positive experiences within the past—perhaps you’ve taken their classes and enjoyed their teaching style. Their eagerness to help students is a key factor in making your decision. If you already know them and respect their work or teaching, you’ll be more motivated to visit and meet them regularly. This connection is crucial, as you will be working with them for the next year or two during your master’s program.
+Remember, you are the one who ultimately has to carry the responsibility and complete the work. While others may help along the way, and people you work with might even leave midway, don’t stop trying. Believe in yourself, stay dedicated, and trust in your work. With persistence, you will make progress.</p>
+<h3>Selecting a Problem:</h3>
+<p>You might already have a particular area of interest, like working on autonomous cars (Tesla, in my case!). However, it’s also important to consult your guide about the current problems they’re working on. Since they’ve likely tackled similar problems before, it’s beneficial to work on something aligned with their expertise.</p>
+<p>In general, choose a problem that you’re genuinely interested in, one that your guide also has some experience with or interest in. Also, pick a topic that’s achievable within the timeline of your master's program (1-2 years). Don’t forget to consider available resources—make sure the necessary tools and data are accessible to you.</p>
+<p><strong>Motivation:</strong></p>
+<p>In research, no one will tell you when or how to work; you’re your own boss. You need to be self-driven, which requires a lot of self-belief. Having one or two people to talk to for motivation—whether it’s your guide, a peer, a friend, or even family—will help keep you focused and encouraged along the way.</p>
+<h3>Reading Papers:</h3>
+<p><img alt="Read Papers" src="images/read_paper.JPG">
+After five months of working on my research, I finally gained a full understanding of the paper and the model I was implementing. However, even after implementing it and running experiments, there were still countless questions and doubts that remained unanswered. So, patience is key—keep pushing forward.</p>
+<p>My research focused on query-based video summarization, where a user provides a textual query along with a long video, and the model generates a summarized video based on the query. After several meetings with my guide, I discovered papers from top conferences like AAAI, CVPR, and ECCV. I downloaded them and the next challenge was deciding which paper to dive into. I skimmed through each one and randomly chose a paper on CHAN from the AAAI conference. I then prepared my first presentation to show my guide and explain the task.</p>
+<p>😂 This process is an art in itself. You have to work hard to understand the concepts they are presenting, making notes of what questions they address, what their contribution is, and so on. Collaborating with your guide will eventually help you get the right interpretation.
+Pick one good paper, read it thoroughly, and focus on understanding the task. Remember, the research in these papers builds upon previous work. Top-quality papers will cite earlier works clearly, explaining what they are referring to.</p>
+<p>As you read, you’ll come across some unclear aspects, like the dataset used in the paper. To understand more about it—how it was collected and its specific settings—refer to the cited paper. Read it, take notes, and things will start to fall into place. You don’t need to read all the cited papers, just the ones that clarify things like the dataset, evaluation metrics, and any other necessary details.</p>
+<p>I vividly remember asking my guide, "How do you read and understand everything with such accuracy and detail?" She kindly replied, "It will come to you with time, but it takes patience." And she was absolutely right.</p>
+<p>To stay organized, I used Zotero to collect my papers and OneNote for digital note-taking, which was especially helpful for drawing diagrams since carrying physical pages and notes wasn’t always feasible.
+A funny thing I noticed is that at the beginning, when I was reading the CHAN paper, I kept encountering the same terminology, model, and concepts. But after 7 or 8 months of working on it, everything started to click into place.</p>
+<h3>Reading and Practical Implementation:</h3>
+<p><img alt="Alt Text" src="images/implementation.JPG"></p>
+<p>Reading papers and implementing them should go hand in hand. At the beginning, you’ll spend time reading to understand the concepts, but once you grasp the basics, dive into implementing them.
+On the first pass, you’ll understand the terminologies and basic ideas. Over time, as you progress, you'll gain more clarity on aspects like the working of the model, the evaluation metrics proposed in other papers, and the dataset used.</p>
+<p>Tip: Surround yourself with great people—like your guide. They can help guide you and provide valuable insights throughout the process.</p>
+<p><strong>Finding Implementations:</strong> A key tip is to look for existing code implementations of the papers you’re reading. Many authors of papers presented at conferences like CVPR, ICLR, ECCV, and AAAI publish their code on GitHub. Once you find the implementation, try setting it up on your local machine and run it. This can take time at first, but don’t get discouraged—solve any errors that pop up, install necessary dependencies, and move forward. At this stage, you may not understand every detail of the code, but simply focus on making it executable.</p>
+<p><strong>Start simple:</strong> Develop a basic model piece by piece. First, set up a data loader, then implement a simple model, and finally, define the training loop.
+I began with a toy model, a data loader, and a training loop. At first, I didn’t implement the evaluation method, so I couldn’t evaluate the model. But after several iterations and model changes, I realized the importance of accuracy and implemented the evaluation method. The key is iteration—making gradual improvements over time.</p>
+<p><strong>Tip:</strong> When you start implementing and experimenting, you'll have many things to note down. Keep detailed notes of every experiment. Use LaTeX to document your findings with proper images—while it might seem challenging at first, it’s actually easy and offers a well-structured way to organize your content. These notes should include insights from each experiment, the problems you encountered, the analysis of results, and any questions you might have. This documentation will be invaluable later on, especially when preparing your thesis.</p>
+<p><strong>Time Management:</strong>
+How do you approach all of this? You need to block long hours of uninterrupted time. Each task could take up to a week to complete. The first couple of days should be dedicated to planning, gathering resources, and setting goals. Then, spend long hours over the next few days working on the task, making steady progress. By the end of the week, you should have results to show your guide.
+Remember: “The work and the outcome will be counted eventually—don’t get distracted by emotions.”</p>
+<p><strong>Exceeding Expectations:</strong>
+Strive to exceed your advisor’s expectations. Meet with your guide every week, even if you haven’t made significant progress—just talking to them will help. If you’re reading a lot of papers and making notes, you’ll undoubtedly have tons of questions. Most of your meetings with your guide will revolve around discussing these questions.
+Make the most of your meetings. Since you can only meet your guide in person once a week (or even once every two weeks), optimize their time. Avoid wasting it with unimportant conversations. Do your homework before the meeting: make a list of the questions you want to ask. If you’re stuck, not getting results, or making little progress, ask your guide—they’ll help.
+During discussions, take notes. If your guide permits, you can even record voice notes for future reference. Asking for deadlines is also helpful—they’ll keep you on track. Even if you don’t meet the deadlines, setting them helps ensure progress.</p>
+<p><img alt="Alt Text" src="images/dubai.JPG"></p>
+<blockquote>
+<p>Pic: My trip to Dubai to present my paper at the <a href="https://ieeexplore.ieee.org/document/10821560">18th International Conference on Control, Automation, Robotics, and Vision (ICARCV)</a></p>
+</blockquote>
+<p>This is the journey, and you have to enjoy every bit of it. While publishing a paper at a conference and attending the conference is a great reward, I believe the bigger reward is the journey itself—the growth, the challenges, the learning, and the process that shapes you along the way.</p>
+<p><span style="color: grey;">Thanks to my guide, my co-guide, my parents, my cousin brother, my family, and God. </span></p>
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=How I Read the Paper and Implemented It!&amp;url=https://srkds.github.io/personal-blog/implementing-a-research-paper.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                      <i class="ic ic-twitter" aria-hidden="true"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://srkds.github.io/personal-blog/implementing-a-research-paper.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                      <i class="ic ic-facebook" aria-hidden="true"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://srkds.github.io/personal-blog/implementing-a-research-paper.html&amp;title=How I Read the Paper and Implemented It!" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+                      <i class="ic ic-linkedin" aria-hidden="true"></i><span class="hidden">LinkedIn</span>
+                    </a>
+                    <a title="Email" aria-label="Email" class="email" href="mailto:?subject=How I Read the Paper and Implemented It!&amp;body=https://srkds.github.io/personal-blog/implementing-a-research-paper.html">
+                      <i class="ic ic-mail" aria-hidden="true"></i><span class="hidden">Email</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="https://srkds.github.io/personal-blog/tag/research.html">Research</a><a href="https://srkds.github.io/personal-blog/tag/deep-learning.html">Deep Learning</a><a href="https://srkds.github.io/personal-blog/tag/pytorch.html">PyTorch</a>                </aside>
+
+                <div class="clear"></div>
+
+
+                </section>
+
+
+                <aside class="post-nav">
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+      <!-- TODO : Body class -->
+    <div id="body-class" style="display: none;" class=""></div>
+
+    <footer id="footer">
+      <div class="inner">
+        <section class="credits">
+
+
+          <span class="credits-theme">Theme <a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a></span>
+          <span class="credits-software">Published with <a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a></span>
+        </section>
+      </div>
+    </footer>
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script type="text/javascript" src="https://srkds.github.io/personal-blog/theme/js/script.js"></script>
+
+</body>
+</html>
