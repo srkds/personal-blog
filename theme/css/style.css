@@ -474,8 +474,10 @@ html.menu-active,
 }
 
 body {
-    font: 400 2em / 1.5em 'Cardo', serif;
+    font: 400 2em / 1.5em 'Lora', serif;
+    font-family: 'Lora', serif;
     color: #45484d;
+    background-color: #fdf7ef;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -500,7 +502,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Fira Sans', sans-serif;
+    font-family: 'Lora', sans-serif;
     text-rendering: optimizeLegibility;
     color: #000
 }
@@ -1320,7 +1322,7 @@ img {
 }
 
 .container .post {
-    padding: 4em 0
+    padding: 1em 0
 }
 
 .container .post:after {
