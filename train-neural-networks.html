@@ -34,7 +34,7 @@
 
 
 
-    <meta name="description" content="Cost function! If you have data of any task X and its desire output Y and if you are able to form a cost function. The procedure...">
+    <meta name="description" content="Cost function! If you have data of any task X and its desire output Y and if you are able to form a cost function then you can get...">
 
     <meta name="author" content="Nirav">
 
@@ -48,7 +48,7 @@
 <!-- Open Graph -->
 <meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="SRKDS"/>
 <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Who trains neural networks?"/>
-<meta prefix="og: http://ogp.me/ns#" property="og:description" content="Cost function! If you have data of any task X and its desire output Y and if you are able to form a cost function. The procedure..."/>
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="Cost function! If you have data of any task X and its desire output Y and if you are able to form a cost function then you can get..."/>
 <meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US"/>
 <meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://srkds.github.io/personal-blog/train-neural-networks.html"/>
 <meta prefix="og: http://ogp.me/ns#" property="og:type" content="article"/>
@@ -78,7 +78,7 @@
   },
   "image": "https://srkds.github.io/personal-blog/theme/images/post-bg.jpg",
   "url": "https://srkds.github.io/personal-blog/train-neural-networks.html",
-  "description": "Cost function! If you have data of any task X and its desire output Y and if you are able to form a cost function. The procedure..."
+  "description": "Cost function! If you have data of any task X and its desire output Y and if you are able to form a cost function then you can get..."
 }
 </script>
 </head>
@@ -136,7 +136,7 @@
         <div class="inner">
             <section class="post-content">
                 <p>Cost function!</p>
-<p>If you have data of any task X and its desire output Y and if you are able to form a cost function.</p>
+<p>If you have data of any task X and its desire output Y and if you are able to form a cost function then you can get desired behaviour from neural network.</p>
 <blockquote>
 <p>The procedure repeatedly adjusts
 the weights of the connections in the network so as to minimize a
@@ -146,6 +146,7 @@ net and the desired output vector.[1]</p>
 <p>How do we measure difference between actual output of neural net and desired output? Using the cost function. Let's see what it means by one example.</p>
 <p><img alt="" src="https://raw.githubusercontent.com/srkds/deep-learning-foundation/refs/heads/main/assets/backpropagation.gif"></p>
 <p>For above example I have used simple three point dataset where we give input between 0 to 1 on x-axis. Values near to 0 and 1 gives output as near to 0, and input in the middle like 0.5 gives output as near to 1. In above example I have shown output of neural network over the time. As you can see, initially the line is flat and does not touch the data points. Over the time line bends and tries to touch the data points. So the initial stat is before training neural net — where predicted values by network is far from desired values. And after the training it pridicts the output that is desired.</p>
+<p>To calculate error I define a function <span class="math">\(E\)</span> that will measure difference of output predicted by neural network and desired values. High error means neural net predicted values that are far from desired values, and low means it is nearer to desired values.</p>
 <p>Now look at this picture.</p>
 <p><img alt="" src="https://raw.githubusercontent.com/srkds/Neural-networks-GYM/refs/heads/main/N-layer-NN/images/correct_initialization.png"></p>
 <p>Here x-axis is different values of one of the weight <span class="math">\(w\)</span> of one of the layer of the neural net. And y-axis is the loss value or error for different values of weight. And this picture shows that neural network figured out a value for weight that gives a lowest error — meaning predicted value is near to desired value that we calculated using cost function.</p>
@@ -153,8 +154,16 @@ net and the desired output vector.[1]</p>
 <blockquote>
 <p>To minimize E by gradient descent it is necessary to compute the partial derivative of E with respect to each weight in the network. This is simply the sum of the partial derivatives for each of the input-output cases. For a given case, the partial detivatives of the error with respect to each weight are computed in two passes. We have already described the forward pass in which the units in each layer have their states determined by the input they receive from units in lower layers using equations (1) and (2). The backward pass which propagates derivatives from the top layer back to the bottom one is more complicated. [1]</p>
 </blockquote>
-<p>Taking partial derivative of error with respect to all the weights of the network.</p>
-<p>We have a data of a specific task eg. cat or not where input to the neural network is cat image and output is either yes(1) or no(0). In addition to it we have defined a neural network architechture specific for our task. Now? how will our neural network will give the correct prediction.</p>
+<p>Taking partial derivative of error with respect to all the weights of the network. What does the partial derivative will tell us?</p>
+<blockquote>
+<p>This means that we know how a change in the total input x to an output unit will affect the error.[1]</p>
+</blockquote>
+<p>It's rise over run — if we nudge weights current value by small value how much impact will it have on value of error. We will keep updating the weights till we get low error.</p>
+<p>So the takeaway is that if we are able define a cost function that gives high value when network predicts values far from desired values and vice versa we can train model to perform any task.</p>
+<p>For example for in query focued video summarization loss function is binary cross entropy that is for binary classification — weather or not shot is relevent to query or not(1 or 0). But here we also want diverse clips from long video, and for that Narasimhan et. al. in CLIP-it[2] proposed Diversity loss along with classification loss.</p>
+<p>So it looks like we can change behavior of neural network by defining a cost function.</p>
+<p><strong>Try Yourself</strong>
+Here is the binary classification loss equation and its code. Our desired output is only two {0, 1} so pass y as 0 and yh as its oposite that is 1 and you should get a high value. and now pass y as 0 and yh as near to 0 eg. 0.003, you will get low value.</p>
 <div class="math">$$
 J = -(Ylog\hat{Y} + (1-Y)log(1-\hat{Y}))
 $$</div>
@@ -166,7 +175,9 @@ $$</div>
 
 <p><strong>References</strong></p>
 <p>[1] Learning representations by back-propagating errors, <i>David E. Rumelhart, Geoffrey E. Hintont
-&amp; Ronald J. Williams, 1986.</p></p>
+&amp; Ronald J. Williams, 1986.</i></p>
+<p>[2] CLIP-It! Language-Guided Video Summarization, <i>Medhini Narasimhan, Anna Rohrbach, and Trevor Darrell, 2021
+</i></p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
