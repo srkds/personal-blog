@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>Autograd Engine and Backpropagation</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+<link href="https://srkds.github.io/personal-blog/backpropagation.html" rel="canonical" />
+  <!-- Feed -->
+
+  <link href="https://srkds.github.io/personal-blog/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+
+    <!-- Custom fonts -->
+     <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+
+    <meta name="description" content="Introduction Backpropagation is the single most important technique that trains all the neural nets that you have seen so far including...">
+
+    <meta name="author" content="Nirav">
+
+    <meta name="tags" content="Research">
+    <meta name="tags" content="Deep Learning">
+    <meta name="tags" content="Backpropagation">
+
+
+
+
+<!-- Open Graph -->
+<meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="SRKDS"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:title" content="Autograd Engine and Backpropagation"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="Introduction Backpropagation is the single most important technique that trains all the neural nets that you have seen so far including..."/>
+<meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://srkds.github.io/personal-blog/backpropagation.html"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:type" content="article"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:published_time" content="2025-12-12 10:03:00+05:30"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:modified_time" content=""/>
+<meta prefix="og: http://ogp.me/ns#" property="article:author" content="https://srkds.github.io/personal-blog/author/nirav.html">
+<meta prefix="og: http://ogp.me/ns#" property="article:section" content="Research"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Research"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Deep Learning"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Backpropagation"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://srkds.github.io/personal-blog/theme/images/home-bg.jpg">
+
+<!-- Twitter Card -->
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "Autograd Engine and Backpropagation",
+  "headline": "Autograd Engine and Backpropagation",
+  "datePublished": "2025-12-12 10:03:00+05:30",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "Nirav",
+    "url": "https://srkds.github.io/personal-blog/author/nirav.html"
+  },
+  "image": "https://srkds.github.io/personal-blog/theme/images/post-bg.jpg",
+  "url": "https://srkds.github.io/personal-blog/backpropagation.html",
+  "description": "Introduction Backpropagation is the single most important technique that trains all the neural nets that you have seen so far including..."
+}
+</script>
+</head>
+<!-- TODO : Body class -->
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+
+
+    </ul>
+  </div>
+</nav>
+    <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" >
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="https://srkds.github.io/personal-blog/" aria-label="Home" title="Home">
+                  <i class="ic ic-arrow-left" aria-hidden="true"></i>
+                  <span>Home</span>
+                </a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button" aria-label="Menu">
+              <i class="ic ic-menu" aria-hidden="true"></i>
+              <span>Menu</span>
+            </a>
+          </span>
+        </nav>
+        <h1 class="post-title">Autograd Engine and Backpropagation</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="https://srkds.github.io/personal-blog/author/nirav.html">Nirav</a>
+            | <time datetime="Fri 12 December 2025">Fri 12 December 2025</time>
+        </span>
+      </div>
+    </header>
+
+  <section id="wrapper">
+    <a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <h1>Introduction</h1>
+<p><code>Backpropagation</code> is the single most important technique that trains all the neural nets that you have seen so far including recent models like ChatGPT. And when I learned this first time during my masters and understood what it does, and how it does, I was amazed. Earlier before understanding backprop and neural network it was black box to I didnt get it what it is doing. lets say you have some equations and you feed input to that equation and the final result will be some output and that output you will feed as input to other equation called loss function and you would either like to increase the loss or decrease the loss. And</p>
+<h2>Algorithm for Neural Networks</h2>
+<h3>Info</h3>
+<p>Here we want to map input x with the output y using some function.</p>
+<p><span class="math">\(x\)</span> is a single training sample</p>
+<p><span class="math">\(x \in \R^{nx}\)</span> Where <span class="math">\(nx\)</span> is feature dimention</p>
+<p><span class="math">\(y\)</span> is a output</p>
+<p><span class="math">\(m\)</span> no of total training examples</p>
+<p><span class="math">\(X \in \R^{(nx, m)}\)</span> here <span class="math">\(X\)</span> is a matrix containing all training exmaples where so <span class="math">\(nx\)</span> is a feature dimention and <span class="math">\(m\)</span> is no of trainign examples. the dimention o f first training example is <span class="math">\(X^{(0)} \in \R^{(nx, 1)}\)</span></p>
+<p><span class="math">\(Y \in \R^{(1,m)}\)</span> and <span class="math">\(Y\)</span> is a a matrix but here as we have only one output per training example so it is a row vector where there is 1 row as we expect only one output per training semple and there is <span class="math">\(m\)</span> columns as no of training samples.</p>
+<div class="math">$$Z = WX + b$$</div>
+<div class="math">$$A = g(Z)$$</div>
+<p><span class="math">\(g()\)</span> can be any activation function$</p>
+<ul>
+<li>relu:</li>
+<li>sigmoid: 1/ 1+ e-x</li>
+</ul>
+<p>Operations that we need to implement</p>
+<ul>
+<li>add</li>
+<li>subtract</li>
+<li>multiplication</li>
+<li>divide</li>
+<li>power</li>
+</ul>
+<p>activation functions</p>
+<ul>
+<li>relu</li>
+<li>sigmoid</li>
+</ul>
+<p>loss function</p>
+<ul>
+<li>binary cross entropy</li>
+</ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=Autograd Engine and Backpropagation&amp;url=https://srkds.github.io/personal-blog/backpropagation.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                      <i class="ic ic-twitter" aria-hidden="true"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://srkds.github.io/personal-blog/backpropagation.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                      <i class="ic ic-facebook" aria-hidden="true"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://srkds.github.io/personal-blog/backpropagation.html&amp;title=Autograd Engine and Backpropagation" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+                      <i class="ic ic-linkedin" aria-hidden="true"></i><span class="hidden">LinkedIn</span>
+                    </a>
+                    <a title="Email" aria-label="Email" class="email" href="mailto:?subject=Autograd Engine and Backpropagation&amp;body=https://srkds.github.io/personal-blog/backpropagation.html">
+                      <i class="ic ic-mail" aria-hidden="true"></i><span class="hidden">Email</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="https://srkds.github.io/personal-blog/tag/research.html">Research</a><a href="https://srkds.github.io/personal-blog/tag/deep-learning.html">Deep Learning</a><a href="https://srkds.github.io/personal-blog/tag/backpropagation.html">Backpropagation</a>                </aside>
+
+                <div class="clear"></div>
+
+
+                </section>
+
+
+                <aside class="post-nav">
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+      <!-- TODO : Body class -->
+    <div id="body-class" style="display: none;" class=""></div>
+
+    <footer id="footer">
+      <div class="inner">
+        <section class="credits">
+
+
+          <span class="credits-theme">Theme <a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a></span>
+          <span class="credits-software">Published with <a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a></span>
+        </section>
+      </div>
+    </footer>
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script type="text/javascript" src="https://srkds.github.io/personal-blog/theme/js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>Vim</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+<link href="https://srkds.github.io/personal-blog/nvim.html" rel="canonical" />
+  <!-- Feed -->
+
+  <link href="https://srkds.github.io/personal-blog/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+
+    <!-- Custom fonts -->
+     <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+
+    <meta name="description" content="This blog contains notes for neovim commands for myself. And also helpful to you if you wanna see how things work in vim. Create a file...">
+
+    <meta name="author" content="Nirav">
+
+    <meta name="tags" content="IDE">
+    <meta name="tags" content="Vim">
+    <meta name="tags" content="Neovim">
+
+
+
+
+<!-- Open Graph -->
+<meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="SRKDS"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:title" content="Vim"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="This blog contains notes for neovim commands for myself. And also helpful to you if you wanna see how things work in vim. Create a file..."/>
+<meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://srkds.github.io/personal-blog/nvim.html"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:type" content="article"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:published_time" content="2025-12-13 10:03:00+05:30"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:modified_time" content=""/>
+<meta prefix="og: http://ogp.me/ns#" property="article:author" content="https://srkds.github.io/personal-blog/author/nirav.html">
+<meta prefix="og: http://ogp.me/ns#" property="article:section" content="Development"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="IDE"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Vim"/>
+<meta prefix="og: http://ogp.me/ns#" property="article:tag" content="Neovim"/>
+<meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://srkds.github.io/personal-blog/theme/images/home-bg.jpg">
+
+<!-- Twitter Card -->
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "Vim",
+  "headline": "Vim",
+  "datePublished": "2025-12-13 10:03:00+05:30",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "Nirav",
+    "url": "https://srkds.github.io/personal-blog/author/nirav.html"
+  },
+  "image": "https://srkds.github.io/personal-blog/theme/images/post-bg.jpg",
+  "url": "https://srkds.github.io/personal-blog/nvim.html",
+  "description": "This blog contains notes for neovim commands for myself. And also helpful to you if you wanna see how things work in vim. Create a file..."
+}
+</script>
+</head>
+<!-- TODO : Body class -->
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+
+
+    </ul>
+  </div>
+</nav>
+    <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" >
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="https://srkds.github.io/personal-blog/" aria-label="Home" title="Home">
+                  <i class="ic ic-arrow-left" aria-hidden="true"></i>
+                  <span>Home</span>
+                </a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button" aria-label="Menu">
+              <i class="ic ic-menu" aria-hidden="true"></i>
+              <span>Menu</span>
+            </a>
+          </span>
+        </nav>
+        <h1 class="post-title">Vim</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="https://srkds.github.io/personal-blog/author/nirav.html">Nirav</a>
+            | <time datetime="Sat 13 December 2025">Sat 13 December 2025</time>
+        </span>
+      </div>
+    </header>
+
+  <section id="wrapper">
+    <a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <p>This blog contains notes for neovim commands for myself. And also helpful to you if you wanna see how things work in vim.</p>
+<p><strong>Create a file and open vim</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">nvim</span><span class="w"> </span><span class="o">[</span><span class="n">filename</span><span class="o">]</span>
+</code></pre></div>
+
+<p>eg.</p>
+<div class="highlight"><pre><span></span><code>nvim main.py
+</code></pre></div>
+
+<p><strong>To write</strong></p>
+<p>Press <code>i</code> that is insert mode and you can start typing. To save changes press <code>esc</code> and then write <code>:w</code>. And to exit from the vim write <code>:q</code>.</p>
+<p><strong>Copy and paste from clipboard</strong></p>
+<p>In vim you can store copied text in multiple registers ie. all the keyboard characters. And the content you want to copy/paste outside vim should be stored in <code>+</code> operator.</p>
+<p>To copy <code>esc</code> then change to visual mode by pressing <code>v</code> and then select the line that you want to copy and then type <code>"+y</code> to copy into <code>+</code> operator.</p>
+<p>To paste from outside vim, first move curser where you want to paste, then change to visual mode by hitting <code>esc</code> key and <code>v</code> then type <code>"+p</code>.</p>
+<p>Copy line: Move curser to that line and hit <code>yy</code>. and to paste it hit <code>p</code>.</p>
+<p>To copy word: change to visual mode, press <code>v</code>, and then move curser to select and then hit <code>y</code>. To paste <code>p</code>.</p>
+<p>Delete line: <code>dd</code></p>
+<p>Delete word: change to visual mode <code>v</code> then select a word and press <code>d</code>.</p>
+<p><strong>Split the screen</strong></p>
+<p>To vertically split the screen write <code>:vsplit</code>.</p>
+<p>To move windows hit <code>ctrl+ww</code>.</p>
+<p>To open directory/files: <code>:edit .</code> and then select file or change directory and hit enter.</p>
+<p><strong>Search</strong></p>
+<p>To search a word <code>/[word to search]</code> then to go to next word press <code>n</code> and to go to previous press <code>N</code>.</p>
+<p>To go back to deselect the searched word <code>:noh</code></p>
+<p>To select and search, change to visual mode <code>v</code> then select word and then press <code>#</code>.</p>
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=Vim&amp;url=https://srkds.github.io/personal-blog/nvim.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                      <i class="ic ic-twitter" aria-hidden="true"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://srkds.github.io/personal-blog/nvim.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                      <i class="ic ic-facebook" aria-hidden="true"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://srkds.github.io/personal-blog/nvim.html&amp;title=Vim" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+                      <i class="ic ic-linkedin" aria-hidden="true"></i><span class="hidden">LinkedIn</span>
+                    </a>
+                    <a title="Email" aria-label="Email" class="email" href="mailto:?subject=Vim&amp;body=https://srkds.github.io/personal-blog/nvim.html">
+                      <i class="ic ic-mail" aria-hidden="true"></i><span class="hidden">Email</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="https://srkds.github.io/personal-blog/tag/ide.html">IDE</a><a href="https://srkds.github.io/personal-blog/tag/vim.html">Vim</a><a href="https://srkds.github.io/personal-blog/tag/neovim.html">Neovim</a>                </aside>
+
+                <div class="clear"></div>
+
+
+                </section>
+
+
+                <aside class="post-nav">
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+      <!-- TODO : Body class -->
+    <div id="body-class" style="display: none;" class=""></div>
+
+    <footer id="footer">
+      <div class="inner">
+        <section class="credits">
+
+
+          <span class="credits-theme">Theme <a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a></span>
+          <span class="credits-software">Published with <a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a></span>
+        </section>
+      </div>
+    </footer>
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script type="text/javascript" src="https://srkds.github.io/personal-blog/theme/js/script.js"></script>
+
+</body>
+</html>
